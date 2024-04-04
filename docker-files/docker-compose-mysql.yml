@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  ecommerce_main_mysql:
+    image: mysql:8.0.36
+    container_name: ecommerce_main_mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: ecommerce_main
+      MYSQL_USER: ecommerce_main_admin
+      MYSQL_ROOT_PASSWORD: secret123$
+    volumes:
+      - C:\Users\user\AppData\mysql\data:/var/lib/mysql
+    ports:
+      - 3306:3306
