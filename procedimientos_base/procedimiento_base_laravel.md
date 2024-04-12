@@ -78,3 +78,16 @@ composer create-project --prefer-dist laravel/laravel api-ecommerce-v10 "10.*"
 # LIMPIAR CACHE
 - Comando:
 php artisan cache:clear
+
+# MIGRACIONES:
+- Crear migración para agregar columna:
+php artisan make:migration add_type_user_column_to_users_table --table=users
+
+php artisan make:migration add_surname_column_to_users_table --table=users
+
+- agregar propiedaddes a la amigración:
+->nullable()
+->default('A')
+
+- correr migraciones:
+php artisan migrate
