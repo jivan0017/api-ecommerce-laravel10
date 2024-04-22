@@ -34,15 +34,19 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function register() {
-        // NOTE: Evitando confirmación de pws en el back: confirmed|
+        /* NOTE: Evitando confirmación de pws en el back: confirmed|
+        */
         $validator = Validator::make(request()->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
+        ], [
+            'email.unique' => 'El email ya se encuentra registrado en la plataforma'
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            // ->toJson()
+            return response()->json($validator->errors(), 400);
         }
 
         $user = new User;
